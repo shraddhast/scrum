@@ -2,9 +2,16 @@ export default function validateInfo(state){
 
     let errors = {}
 
+     if( state.name === "") {
+         errors.name= "Name required"
+     }
+     else if (! /^[a-zA-Z]+(\s[a-zA-Z]+)?$/.test(state.name)){
+        errors.name = "Only Alphabets are allowed" 
+     }
+
     if(!state.email) {
         errors.email = "Email required"
-    } else if(!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(state.email) ) 
+    } else if(!/^[A-Za-z]{3,}[.][a-z]{2,}@[a-z]{2,}[.]{1}[a-z.]{2,}$/.test(state.email) ) 
     {
         errors.email = "Not a valid Email" 
     }
@@ -32,12 +39,7 @@ export default function validateInfo(state){
 
 
 
-    // if( state.ename === "") {
-    //      errors.ename= "Name required"
-    //  }
-    //  else if (! /^[a-zA-Z]+(\s[a-zA-Z]+)?$/.test(state.ename)){
-    //     errors.ename = "Only Alphabets are allowed" 
-     //}
+   
     //  else if (! /^[A-Za-z]+$/.test(values.ename)){
     //     errors.ename = "Only Alphabets are allowed" 
     //  }

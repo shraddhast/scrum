@@ -4,6 +4,7 @@ const CardStyles = makeStyles((theme) => ({
     root:{
         marginTop:"25%",
         height:"300px",
+        marginLeft:"5%",
         marginLeft:"5%"
     },
     title:{

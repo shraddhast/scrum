@@ -7,7 +7,6 @@ function Navbar() {
     const history = useHistory()
     const classes = NavbarStyles()
     const feedbackHandler = () => {
-
         history.push("./dashboard2")
     }
     const clickHandler = () => {

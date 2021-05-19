@@ -1,12 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const RegisterStyles = makeStyles((theme) => ({
+    grid:{
+        background:"pink"
+    },
     page:{
         width:"30%",
         height: "30%",
         margin:"30%",
         marginTop:"5%",
-        padding:"5%"
+        padding:"5%",
+        background:"lightgreen"
         },
     text_field:{
             width:"100%",

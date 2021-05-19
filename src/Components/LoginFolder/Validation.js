@@ -4,16 +4,16 @@ function validateInfo(state){
 
     if(!state.email) {
         errors.email = "Email required"
-    } else if(!/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(state.email)) {
+    } else if(!/^[A-Za-z]{3,}[.][a-z]{2,}@[a-z]{2,}[.]{1}[a-z.]{2,}$/.test(state.email)) {
          errors.email = "Not a valid Email" 
     }
 
-    if(state.password === ""){
-        errors.password = "Password required"
-    }
-   else if(!/^(?=.*\d)(?=.*[a-z]).{4,14}$/.test(state.password)){
-        errors.password = "Password should be Alphanumeric"
-   }
+//     if(state.password === ""){
+//         errors.password = "Password required"
+//     }
+//    else if(!/^(?=.*\d)(?=.*[a-z]).{4,14}$/.test(state.password)){
+//         errors.password = "Password should be Alphanumeric"
+//    }
 
 
 

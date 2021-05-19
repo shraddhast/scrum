@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const Cards2Styles = makeStyles((theme) => ({
     root:{
         marginTop:"25%",
-        height:"325px",
+        height:"350px",
         marginLeft:"5%",
         marginRight:"5%",
         backgroundColor:"lightgreen"

@@ -1,10 +1,12 @@
 import React, { useState }  from 'react'
 import LoginStyles  from './LoginStyles'
 import {useHistory} from 'react-router-dom'
-import { Paper, Grid,TextField, Button, Typography, FormControl} from '@material-ui/core'
+import { Paper, Grid,TextField, Button, Typography,} from '@material-ui/core'
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import validateInfo from './Validation';
+import axios from 'axios';
+import Baseurl from '../BaseUrl';
 
 function Login() {
     const classes = LoginStyles();
@@ -40,12 +42,24 @@ function Login() {
 
     const loginHandler = (e) => {
         e.preventDefault()
-        seterrors(validateInfo(state)) 
-               
+        seterrors(validateInfo(state))  
+        // axios.post(`${Baseurl}/welcome/login`,state)
+        // .then(res =>  console.log(res) )
+        // .catch(err => console.log(err) )
+
+        // axios({
+        //     method: 'post',
+        //     url: `http://12dbb936e427.ngrok.io/welcome/login`,
+        //     data: {
+        //         email: "prashant.sawant@gmail.com",
+        //         password: "goat"
+        //     },
+        //     headers: {'Authorization': 'Bearer ...'}
+        //   });    
     }
     
     return (        
-            <Grid>
+            <Grid container className={classes.grid}>
                 <Paper className={classes.page}>                    
                     <h1> Login</h1>
                     

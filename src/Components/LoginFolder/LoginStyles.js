@@ -1,12 +1,17 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const LoginStyles = makeStyles((theme) => ({
+const LoginStyles = makeStyles(() => ({
+    grid:{
+        background:"pink"
+    },
     page:{
         width:"30%",
         height: "30%",
         margin:"30%",
         marginTop:"5%",
-        padding:"5%"
+        padding:"5%",
+        backgroundColor:"lightgreen"
+        
         },
     text_field:{
             width:"100%",
@@ -19,8 +24,7 @@ const LoginStyles = makeStyles((theme) => ({
     },
     buttons1:{
         display:"flex",
-        justifyContent:"flex-start",
-        marginTop:"6%"       
+        justifyContent:"flex-start"        
     },
     if_new:{
         display:"flex",
