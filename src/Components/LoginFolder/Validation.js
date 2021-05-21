@@ -8,9 +8,9 @@ function validateInfo(state){
          errors.email = "Not a valid Email" 
     }
 
-//     if(state.password === ""){
-//         errors.password = "Password required"
-//     }
+    if(state.password === ""){
+        errors.password = "Password required"
+    }
 //    else if(!/^(?=.*\d)(?=.*[a-z]).{4,14}$/.test(state.password)){
 //         errors.password = "Password should be Alphanumeric"
 //    }

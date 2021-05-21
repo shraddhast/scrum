@@ -1,4 +1,4 @@
-import React, { useState }  from 'react'
+import React, { useEffect, useState }  from 'react'
 import LoginStyles  from './LoginStyles'
 import {useHistory} from 'react-router-dom'
 import { Paper, Grid,TextField, Button, Typography,} from '@material-ui/core'
@@ -8,10 +8,11 @@ import validateInfo from './Validation';
 import axios from 'axios';
 import Baseurl from '../BaseUrl';
 
-function Login() {
+function Login(props) {
     const classes = LoginStyles();
     const history = useHistory()
 
+    const [sucesslog, setsucesslog] = useState()
     const [errors, seterrors] = useState({ })
     
     const [state, setstate] = useState({
@@ -39,49 +40,62 @@ function Login() {
     const toggleHandler = () => {
         setvisible( visible ? false : true)
     }
-
     const loginHandler = (e) => {
         e.preventDefault()
-        seterrors(validateInfo(state))  
-        // axios.post(`${Baseurl}/welcome/login`,state)
-        // .then(res =>  console.log(res) )
-        // .catch(err => console.log(err) )
-
-        // axios({
-        //     method: 'post',
-        //     url: `http://12dbb936e427.ngrok.io/welcome/login`,
-        //     data: {
-        //         email: "prashant.sawant@gmail.com",
-        //         password: "goat"
-        //     },
-        //     headers: {'Authorization': 'Bearer ...'}
-        //   });    
+        seterrors(validateInfo(state))
+        abc()      
     }
-    
+
+    function abc () {
+        axios({
+            method: 'post',
+            url: `${Baseurl}/welcome/login`,
+            data: state,
+            })
+        .then( res => {  
+            if(res.data.success){
+                history.push("/dashboard")   }
+            else{
+                history.push("/") }
+        })
+        .catch(err => alert("Invalid login ") )
+        console.log(sucesslog) 
+    }   
+   
     return (        
             <Grid container className={classes.grid}>
-                <Paper className={classes.page}>                    
+                <Paper className={classes.page} >                   
                     <h1> Login</h1>
                     
-                    <TextField label="Email" name="email" value={email} onChange={changeHandler}
-                    className={classes.text_field} /><br/>
-                    <small className={classes.noti}> {errors.email && <p>{errors.email}</p>} </small> 
-
+                    <Typography>
+                        <TextField label="Email" name="email" value={email} onChange={changeHandler}
+                        className={classes.text_field} />
+                        <small className={classes.noti}> {errors.email && <p>{errors.email}</p>} </small> 
+                    </Typography>
                     
-                    <TextField label="Password" name="password" value={password} onChange={changeHandler}
+                    <Typography>
+                        <TextField label="Password" name="password" value={password} 
+                        onChange={changeHandler}
                         type={visible ? "text" : "password"} className={classes.text_field}/>
                         <i onClick={toggleHandler}> {visible ? Visibility: NonVisibility}</i>
-                        <small className={classes.noti}> {errors.password && <p>{errors.password}</p>} </small> 
+                            <small className={classes.noti}> {errors.password && <p>{errors.password}</p>} 
+                            </small> 
+                    </Typography>
                     
-                    <Button variant="contained" color="primary" className={classes.buttons1} type="submit" 
-                        onClick={loginHandler}>Login</Button><br/>
                     
-                    <Button variant="contained" color="primary" className={classes.buttons1}
+                    <Typography className={classes.buttons1}>
+                        <Button variant="contained" color="primary"  type="submit" 
+                        onClick={loginHandler}>Login</Button>
+                    </Typography>
+                    
+                    <Typography className={classes.buttons1}>
+                        <Button variant="contained" color="primary" 
                         onClick={clickHandler}>Register</Button>
-                    
+                    </Typography>
+                                        
                     <Typography className={classes.if_new}> Register if New user</Typography>
-                   
-                </Paper>
+                         
+                </Paper>                
             </Grid>
    )
 }

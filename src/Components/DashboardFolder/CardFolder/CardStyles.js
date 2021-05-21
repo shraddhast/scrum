@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const CardStyles = makeStyles((theme) => ({
     root:{
         marginTop:"25%",
-        height:"300px",
+        height:"350px",
         marginLeft:"5%",
-        marginLeft:"5%"
+        marginRight:"5%"
     },
     title:{
         display:"flex",

@@ -12,71 +12,65 @@ import Baseurl from '../BaseUrl';
 function Register() {
 
     const classes =  RegisterStyles();
-    
+    const history = useHistory()
+
+    const [sucesslog, setsucesslog] = useState()
     const [errors, seterrors] = useState({})
     const [state, setstate] = useState({
         name : "",
         email : "",
-        // password:"",
-        // cpassword:""
+        profile_image: null,
     })
-    const {name, email, password, cpassword} = state
+    
+    const {name, email, profile_image} = state
 
     const changeHandler = (e) => {
         const {name, value} = e.target 
         setstate({
            ...state,
-           [name]: value
+           [name]: value,         
         })
     }
-
+    const onFileChange = event => { 
+        setstate({ ...state , profile_image: event.target.files[0] }); 
+      }; 
+  
     const registerHandler = (e) => {
         e.preventDefault();
-        seterrors((validateInfo(state)))
-        Data()
-        // axios.post( `${Baseurl}/welcome`, state )
-        // .then(res => console.log(res) )
-        // .catch(err => console.log(err) )  
-
+        seterrors((validateInfo(state)))  
+        status()    
     }
-    const Data = () => {
-        const employee = JSON.parse(localStorage.getItem("employee") || "[]")
-        const employeeData = [...employee]
 
-        if(employeeData.length === 0){
-            employeeData.push(state)
-           localStorage.setItem('employee',JSON.stringify(employeeData))
-           }
+    function status(){
 
-         else{
-                let newlist = employeeData.filter((val)=>{
-                    return val.email == state.email                    
-                })
-                console.log(employeeData)
-                if(newlist.length !== 0 ){
-                    alert("Email not entered or already registered email")}
+        const formData = new FormData();  
+        formData.append( "profile_image",  profile_image); 
+        formData.append("email", state.email);
+        formData.append("name", state.name);
+        console.log(profile_image)                  
+            
+        axios({
+            method: 'post',
+            url: `${Baseurl}/welcome` ,        
+            data: formData ,
+            headers: {
+                Accept: "application/json",
+                'Content-Type': 'multipart/form-data'
+                },            
+            })
+            .then(res => {                   
+                if(res.data.success){
+                    alert("Registration sucessful")
+                    history.push("./") }
                 else{
-                    employeeData.push(state)
-                    localStorage.setItem("user",JSON.stringify(employeeData))
-                    alert("Registration done sucessfully")
-                }
-            }
-   }
-    const history = useHistory()
+                    history.push("./register")}    
+                })          
+            .catch(err => alert("Invalid data or Already registered"))                                  
+        }
+
     const clickHandler = () => {
         history.push("./")
     }
-    const Visibility = <VisibilityIcon className={classes.visible}/>
-    const NonVisibility = <VisibilityOffIcon className={classes.visible}/>
-    
-    const [visible, setvisible] = useState(false)
-    const [eye, seteye] = useState(false)
-    const toggleHandler = () => {
-        setvisible( visible ? false : true)
-    }
-    const eyeHandler = () => {
-        seteye( eye ? false : true)
-    }  
 
     return (
         <div>
@@ -93,17 +87,11 @@ function Register() {
                         className={classes.text_field}/><br/>
                          <small className={classes.noti}> {errors.email && <p>{errors.email}</p>} </small> 
 
+                    <div className="input-group mb-3">
+                        <input type="file" className="form-control" accept=" .jpg, .jpeg"
+                          onChange={onFileChange} />
+                    </div>
                     
-                    {/* <TextField label="Password" name="password" value={password} onChange={changeHandler}
-                        type={visible ? "text" : "password"} className={classes.text_field}/>
-                        <i onClick={toggleHandler}>{visible ? Visibility : NonVisibility}</i>
-                        <small className={classes.noti}> {errors.password && <p>{errors.password}</p>} </small> 
-                    
-                    <TextField label="Confirm Password" name="cpassword" value={cpassword} onChange={changeHandler}
-                        type={eye ? "text" : "password"} className={classes.text_field}/>
-                        <i onClick={eyeHandler}>{eye ? Visibility : NonVisibility}</i>
-                        <small className={classes.noti}> {errors.cpassword && <p>{errors.cpassword}</p>} </small> 
-                         */}
                     <Button variant="contained" color="primary" type="submit" className={classes.buttons1} onClick={registerHandler}>
                         Register</Button>
 

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import Baseurl from '/Users/webwerks/scrum/src/Components/BaseUrl';
 import Cards2Styles from './Cards2Styles'
 import { Card, CardContent, CardActions, CardMedia, CardActionArea, Grid, Typography, TextField, Button} from '@material-ui/core'
 import cardData2 from './CardData2'
@@ -9,6 +11,13 @@ function Cards2() {
     const [count, setcount] = useState('')
     const changeHandler = (e) => {
         setcount(e.target.value)
+        axios({
+            method: 'post',
+            url: `${Baseurl}/feedback`,            
+            data: count,
+          })
+          .then( res => console.log(res))          
+          .catch(err => console.log(err))
     }
 
     return (
@@ -33,8 +42,7 @@ function Cards2() {
                             </CardActionArea>                    
                         </Card>
                     </Grid> ))
-                }
-                
+                }    
                 
             </Grid>
         </div>

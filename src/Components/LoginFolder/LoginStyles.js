@@ -5,13 +5,13 @@ const LoginStyles = makeStyles(() => ({
         background:"pink"
     },
     page:{
+       justifyContent:"center",
         width:"30%",
         height: "30%",
         margin:"30%",
         marginTop:"5%",
-        padding:"5%",
-        backgroundColor:"lightgreen"
-        
+        padding:"5%", 
+        background:"lightgreen !important"  
         },
     text_field:{
             width:"100%",
@@ -24,7 +24,8 @@ const LoginStyles = makeStyles(() => ({
     },
     buttons1:{
         display:"flex",
-        justifyContent:"flex-start"        
+        justifyContent:"flex-start" ,
+        marginTop:"5% !important"       
     },
     if_new:{
         display:"flex",
