@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios"
-import Baseurl from "/Users/webwerks/scrum/src/Components/BaseUrl"
 import CardStyles from './CardStyles'
 import { Card, CardContent, CardActions, Grid, Typography} from '@material-ui/core'
 
@@ -14,7 +13,7 @@ function Cards() {
   useEffect(() => {
     axios({
       method: 'get',
-      url: `${Baseurl}/user/allFeedback`,
+      url: `${process.env.REACT_APP_URL}/user/allFeedback`,
       headers: {'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUxYmNkZGQwLTljNDMtNGQ2MC1iMjE0LTQ5YTBiOGFlYzQ2OCIsImVtYWlsIjoicG9vamEubGFuZGVAZ21haWwuY29tIiwiaWF0IjoxNjIxNDk1MDA2fQ.qj-b_CFxZh9CjuUeL4ii5oivXWimVgcom7iFWcFt0gA'}
     })
       .then( res => { setstate({comment : res.data.data})} )

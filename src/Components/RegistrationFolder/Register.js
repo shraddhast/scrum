@@ -3,18 +3,13 @@ import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import RegisterStyles from './RegisterStyle'
 import { Paper, Grid,TextField, Button, Typography} from '@material-ui/core'
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import validateInfo from './Validate';
-import Baseurl from '../BaseUrl';
-
 
 function Register() {
 
     const classes =  RegisterStyles();
     const history = useHistory()
 
-    const [sucesslog, setsucesslog] = useState()
     const [errors, seterrors] = useState({})
     const [state, setstate] = useState({
         name : "",
@@ -51,7 +46,7 @@ function Register() {
             
         axios({
             method: 'post',
-            url: `${Baseurl}/welcome` ,        
+            url: `${process.env.REACT_APP_URL}/welcome` ,        
             data: formData ,
             headers: {
                 Accept: "application/json",
@@ -68,6 +63,7 @@ function Register() {
             .catch(err => alert("Invalid data or Already registered"))                                  
         }
 
+    console.log(process.env)
     const clickHandler = () => {
         history.push("./")
     }

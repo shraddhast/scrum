@@ -9,6 +9,11 @@ const NavbarStyles = makeStyles((theme) => ({
     tb:{
         marginLeft:"auto"
     },
+    user_name:{
+        fontSize: 22,
+        fontWeight:"bold"
+
+    }
 
 }))
 

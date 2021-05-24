@@ -6,29 +6,31 @@ import NavbarStyles from './NavbarStyle'
 function Navbar() {
     const history = useHistory()
     const classes = NavbarStyles()
-    
-    const [log, setlog] = useState(true)
-    
+
+    const name = JSON.stringify(localStorage.getItem("name"))
+
     const feedbackHandler = () => {
         history.push("./dashboard2")
     }
     const clickHandler = () => {
-        setlog(false)
-        if(!log){
-            history.push('./')
-        }
-        
+        localStorage.setItem("isLoggedin", false)
+        history.push('./')
     }
+    
     return (
         <div>
             <AppBar className={classes.appbar}>
-                <Toolbar className={classes.tb} >
-                    <Button onClick={feedbackHandler}>Add Feedback</Button>
-                    <Button onClick={clickHandler}>Logout</Button>
+                <Toolbar>
+                    <Typography className={classes.user_name}> 
+                        {JSON.parse(name)} 
+                    </Typography>
+                    <Typography className={classes.tb}>
+                        <Button onClick={feedbackHandler} >Add Feedback</Button>
+                        <Button onClick={clickHandler}>Logout</Button>
+                    </Typography>                    
                 </Toolbar>
             </AppBar>
-        </div>
-    )
-}
+        </div> )
+    }
 
 export default Navbar

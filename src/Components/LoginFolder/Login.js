@@ -6,7 +6,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import validateInfo from './Validation';
 import axios from 'axios';
-import Baseurl from '../BaseUrl';
 
 function Login(props) {
     const classes = LoginStyles();
@@ -49,14 +48,14 @@ function Login(props) {
     function abc () {
         axios({
             method: 'post',
-            url: `${Baseurl}/welcome/login`,
+            url: `${process.env.REACT_APP_URL}/welcome/login`,
             data: state,
             })
         .then( res => {  
             if(res.data.success){
+                localStorage.setItem("isLoggedin", true)
+                localStorage.setItem("name",res.data.data.name)
                 history.push("/dashboard")   }
-            else{
-                history.push("/") }
         })
         .catch(err => alert("Invalid login ") )
         console.log(sucesslog) 
