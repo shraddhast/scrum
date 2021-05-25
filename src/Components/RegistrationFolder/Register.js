@@ -32,8 +32,11 @@ function Register() {
   
     const registerHandler = (e) => {
         e.preventDefault();
-        seterrors((validateInfo(state)))  
-        status()    
+        const valid = validateInfo(state)
+        if(valid){
+            seterrors((validateInfo(state))) }
+        else{
+            status() }       
     }
 
     function status(){
