@@ -1,8 +1,6 @@
 import React from 'react'
 import "./App.css";
 import { Route, Switch } from 'react-router-dom';
-import Login from './Components/LoginFolder/Login';
-import Register from './Components/RegistrationFolder/Register';
 import Dashboard from './Components/DashboardFolder/Dashboard';
 import Dashboard2 from './Components/DashboardFolder/Dashboard2';
 import Register1 from './Components/RegistrationFolder/Register1';

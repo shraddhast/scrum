@@ -3,7 +3,7 @@ import { AppBar, Button, Toolbar, Typography } from '@material-ui/core'
 import {useHistory} from 'react-router-dom'
 import NavbarStyles from './NavbarStyle'
 
-function Navbar() {
+function Navbar(props) {
     const history = useHistory()
     const classes = NavbarStyles()
 
@@ -12,7 +12,12 @@ function Navbar() {
     const feedbackHandler = () => {
         history.push("./dashboard2")
     }
-    const clickHandler = () => {
+
+    const backHandler = () => {
+        history.push('./dashboard')
+    }
+
+    const logoutHandler = () => {
         localStorage.setItem("isLoggedin", false)
         history.push('./')
     }
@@ -24,9 +29,14 @@ function Navbar() {
                     <Typography className={classes.user_name}> 
                         {JSON.parse(name)} 
                     </Typography>
-                    <Typography className={classes.tb}>
-                        <Button onClick={feedbackHandler} >Add Feedback</Button>
-                        <Button onClick={clickHandler}>Logout</Button>
+                    <Typography className={classes.tb}>                        
+                        {
+                            props.dash ? 
+                            <Button onClick={feedbackHandler}>Add Feedback</Button>
+                            : 
+                            <Button onClick={backHandler}>Back</Button>  
+                        }                            
+                        <Button onClick={logoutHandler}>Logout</Button>
                     </Typography>                    
                 </Toolbar>
             </AppBar>

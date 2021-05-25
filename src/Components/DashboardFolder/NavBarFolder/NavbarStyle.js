@@ -4,7 +4,7 @@ const NavbarStyles = makeStyles((theme) => ({
 
     appbar:{
         display:"flex",
-        background:"pink"
+        background:"#0277bd"
     },
     tb:{
         marginLeft:"auto"

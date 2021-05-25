@@ -1,12 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const Cards2Styles = makeStyles((theme) => ({
+    grid:{
+      // background:"#81d4fa"
+    },
     root:{
         marginTop:"25%",
         height:"350px",
         marginLeft:"5%",
         marginRight:"5%",
-        backgroundColor:"lightgreen"
+        backgroundColor:"#e1f5fe",
+        color:"black"
     },
     media:{
         display:"flex",
@@ -30,6 +34,11 @@ const Cards2Styles = makeStyles((theme) => ({
         display:"flex",
         justifyContent:"flex-end"
     },
+    btn:{
+        backgroundColor:"#81d4fa",
+        color:"black",
+        
+    }
 
 
 }))

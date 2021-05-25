@@ -19,7 +19,7 @@ function Dashboard() {
     
     return (
         <div>
-            <Navbar/>
+            <Navbar dash="dash"/>
             <Cards/>
         </div>
     )

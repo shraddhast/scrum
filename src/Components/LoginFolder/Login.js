@@ -41,8 +41,13 @@ function Login(props) {
     }
     const loginHandler = (e) => {
         e.preventDefault()
-        seterrors(validateInfo(state))
-        abc()      
+        const valid = validateInfo(state)
+        //seterrors(validateInfo(state))
+        if(Object.keys(valid).length !== 0) {
+            seterrors(valid) }
+        else{
+            abc()
+        }                          
     }
 
     function abc () {
