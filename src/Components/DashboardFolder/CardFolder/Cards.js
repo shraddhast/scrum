@@ -9,7 +9,7 @@ function Cards() {
     comment:[] ,
     sendby:""
   })
-
+  
   useEffect(() => {
     axios({
       method: 'get',

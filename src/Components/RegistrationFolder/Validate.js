@@ -16,25 +16,25 @@ export default function validateInfo(state){
         errors.email = "Not a valid Email" 
     }
 
-    if(state.password === ""){
-        errors.password = "Password required"
-    }
-   else if(!/^(?=.*\d)(?=.*[a-z]).{4,14}$/.test(state.password)){
-        errors.password = "Password should be Alphanumeric"
-   }
-   else if((state.password.length <= 8) || (state.password.length > 12)){
-        errors.password ="Password length should be between 8-12"
-    }
+//     if(state.password === ""){
+//         errors.password = "Password required"
+//     }
+//    else if(!/^(?=.*\d)(?=.*[a-z]).{4,14}$/.test(state.password)){
+//         errors.password = "Password should be Alphanumeric"
+//    }
+//    else if((state.password.length <= 8) || (state.password.length > 12)){
+//         errors.password ="Password length should be between 8-12"
+//     }
 
-    if(state.cpassword === ""){
-        errors.cpassword = "Password required"
-    }
-   else if(!/^(?=.*\d)(?=.*[a-z]).{4,14}$/.test(state.cpassword)){
-        errors.cpassword = "Password should be Alphanumeric"
-   }
-   else if(state.password !== state.cpassword){
-        errors.cpassword = "Password does not match"
-   }
+//     if(state.cpassword === ""){
+//         errors.cpassword = "Password required"
+//     }
+//    else if(!/^(?=.*\d)(?=.*[a-z]).{4,14}$/.test(state.cpassword)){
+//         errors.cpassword = "Password should be Alphanumeric"
+//    }
+//    else if(state.password !== state.cpassword){
+//         errors.cpassword = "Password does not match"
+//    }
  
 
 

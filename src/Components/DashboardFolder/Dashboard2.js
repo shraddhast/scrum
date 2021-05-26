@@ -8,6 +8,7 @@ import { Card, CardContent, CardActions, CardMedia, CardActionArea, Grid, Typogr
 
 function Dashboard2() {
     const history = useHistory()
+   
     const isLoggedin = JSON.parse(localStorage.getItem("isLoggedin"));   
     const [state, setstate] = useState({
         cardData: []

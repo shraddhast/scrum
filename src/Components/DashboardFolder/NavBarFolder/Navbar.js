@@ -34,7 +34,7 @@ function Navbar(props) {
                             props.dash ? 
                             <Button onClick={feedbackHandler}>Add Feedback</Button>
                             : 
-                            <Button onClick={backHandler}>Back</Button>  
+                            <Button onClick={backHandler}>Dashboard</Button>  
                         }                            
                         <Button onClick={logoutHandler}>Logout</Button>
                     </Typography>                    

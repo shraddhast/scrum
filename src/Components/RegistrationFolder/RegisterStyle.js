@@ -35,6 +35,9 @@ const RegisterStyles = makeStyles((theme) => ({
         display:"flex",
         justifyContent:"flex-start"
     },
+    input_image:{
+        marginTop:"5%"
+    },
 
 
 }))

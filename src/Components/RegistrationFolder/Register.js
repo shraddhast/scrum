@@ -33,10 +33,13 @@ function Register() {
     const registerHandler = (e) => {
         e.preventDefault();
         const valid = validateInfo(state)
-        if(valid){
-            seterrors((validateInfo(state))) }
-        else{
-            status() }       
+        
+        if(Object.keys(valid).length !== 0){
+            seterrors(valid) }
+        else if(Object.keys(valid).length == 0){
+            status() 
+        } 
+        console.log(valid,"valid")      
     }
 
     function status(){
@@ -86,10 +89,10 @@ function Register() {
                         className={classes.text_field}/><br/>
                          <small className={classes.noti}> {errors.email && <p>{errors.email}</p>} </small> 
 
-                    <div className="input-group mb-3">
-                        <input type="file" className="form-control" accept=" .jpg, .jpeg"
+                    <Typography className={classes.input_image}>
+                        <input type="file" accept=" .jpg, .jpeg"
                           onChange={onFileChange} />
-                    </div>
+                    </Typography>
                     
                     <Button variant="contained" color="primary" type="submit" className={classes.buttons1} onClick={registerHandler}>
                         Register</Button>

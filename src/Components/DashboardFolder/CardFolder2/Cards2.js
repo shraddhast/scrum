@@ -8,6 +8,8 @@ function Cards2(props) {
     
     const classes = Cards2Styles()
     const [feedback, setfeedback] = useState({})
+    const [disable, setdisable] = useState(false)
+
     const changeHandler = (e) => {
         setfeedback({ feedback : e.target.value})
     }
@@ -22,7 +24,10 @@ function Cards2(props) {
             url: `${process.env.REACT_APP_URL}/feedback`,            
             data: feedback,
             })
-            .then( res => console.log(res))          
+            .then( res => {
+                alert("Sucessfully Registered")
+                setdisable(true)
+            })          
             .catch(err => console.log(err))    
     }
     return (    
@@ -34,10 +39,10 @@ function Cards2(props) {
                                 <Typography value={feedback} onChange={changeHandler} inputProps={{maxLength:100}}>
                                 <TextField variant="outlined" placeholder= "Write feedback" fullWidth> </TextField>
                                 <small className={classes.small}>Max 100 characters</small>
-                                { !isEmptyObj(feedback)  && <small className={classes.max_count}>{feedback.feedback.length}/100</small> }                       
+                             { !isEmptyObj(feedback)  && <small className={classes.max_count}>{feedback.feedback.length}/100</small> }                       
                             </Typography>        
                             <CardActions className={classes.action}>
-                                <Button variant="contained" color="primary" onClick={clickHandler} className={classes.btn}>Submit Feedback</Button>
+                                <Button variant="contained" color="primary" onClick={clickHandler} disabled={disable} className={classes.btn}>Submit Feedback</Button>
                             </CardActions>                    
                         </CardContent>                        
                 </CardActionArea>                    
