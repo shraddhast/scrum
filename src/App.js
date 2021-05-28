@@ -3,8 +3,8 @@ import "./App.css";
 import { Route, Switch } from 'react-router-dom';
 import Dashboard from './Components/DashboardFolder/Dashboard';
 import Dashboard2 from './Components/DashboardFolder/Dashboard2';
-import Register1 from './Components/RegistrationFolder/Register1';
-import Login1 from './Components/LoginFolder/Login1';
+import Register1 from './Components/LoginRegistrationFolder/RegistrationFolder/Register1';
+import Login1 from './Components/LoginRegistrationFolder/LoginFolder/Login1';
 
 function App() {
   return (

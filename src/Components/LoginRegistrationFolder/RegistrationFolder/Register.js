@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 import RegisterStyles from './RegisterStyle'
 import { Paper, Grid,TextField, Button, Typography} from '@material-ui/core'
-import validateInfo from './Validate';
+import validateInfo from '../Validation';
 
 function Register() {
 

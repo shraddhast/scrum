@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom'
 import { Paper, Grid,TextField, Button, Typography,} from '@material-ui/core'
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import validateInfo from './Validation';
+import validateInfo from '../Validation';
 import axios from 'axios';
 
 function Login(props) {
